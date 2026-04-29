@@ -577,24 +577,28 @@
     <section id="analytics" class="analytics">
         <h2 class="analytics-title">Analytics &amp; Evidence</h2>
         <div class="analytics-grid">
-            <div class="analytics-card">
-                <div class="analytics-number">10–25%+</div>
-                <div class="analytics-note">Typical energy yield increase from single-axis tracking vs fixed-tilt PV systems (varies by location and design). Source: NREL and industry studies — see <a href="https://www.nrel.gov/docs/fy13osti/57546.pdf" target="_blank" rel="noopener">NREL</a>.</div>
+            <div class="analytics-card" style="text-align:center;">
+                <canvas id="chartTracker" aria-label="Tracker vs Fixed energy yield" role="img" style="max-height:160px;"></canvas>
+                <div class="analytics-number">Tracker Gain</div>
+                <div class="analytics-note">Illustrative: extra energy yield vs fixed-tilt PV. Source: <a href="https://www.nrel.gov/docs/fy13osti/57546.pdf" target="_blank" rel="noopener">NREL</a>.</div>
             </div>
 
-            <div class="analytics-card">
-                <div class="analytics-number">~1 TW</div>
-                <div class="analytics-note">Global cumulative installed solar PV capacity surpassed the terawatt scale in the early 2020s, reflecting rapid deployment worldwide. Source: IEA Renewables report — <a href="https://www.iea.org/reports/renewables-2023" target="_blank" rel="noopener">IEA</a>.</div>
+            <div class="analytics-card" style="text-align:center;">
+                <canvas id="chartCost" aria-label="Cost decline over time" role="img" style="max-height:160px;"></canvas>
+                <div class="analytics-number">Cost Decline</div>
+                <div class="analytics-note">Representative decline in utility-scale PV costs over the last decade. Source: IRENA/IEA.</div>
             </div>
 
-            <div class="analytics-card">
-                <div class="analytics-number">>80%</div>
-                <div class="analytics-note">Decline in utility-scale solar costs (LCOE/capex) over the past decade, improving competitiveness versus conventional generation. Source: IRENA/IEA analysis.</div>
+            <div class="analytics-card" style="text-align:center;">
+                <canvas id="chartCapacity" aria-label="Global PV capacity" role="img" style="max-height:160px;"></canvas>
+                <div class="analytics-number">Global PV Scale</div>
+                <div class="analytics-note">Cumulative installed PV reached the terawatt scale in the early 2020s. Source: <a href="https://www.iea.org/reports/renewables-2023" target="_blank" rel="noopener">IEA</a>.</div>
             </div>
 
-            <div class="analytics-card">
-                <div class="analytics-number">40% (targeted)</div>
-                <div class="analytics-note">Prototype and optimized tracker+panel system performance can outperform static panels; our design goal is a high-yield biomimetic arrangement — site-specific validation required.</div>
+            <div class="analytics-card" style="text-align:center;">
+                <canvas id="chartTarget" aria-label="SUNSPOT target improvement" role="img" style="max-height:160px;"></canvas>
+                <div class="analytics-number">SUNSPOT Target</div>
+                <div class="analytics-note">Design target for improved yield vs baseline static panels (site validation required).</div>
             </div>
         </div>
         <p style="text-align:center;font-size:0.9rem;color:var(--text-light);margin-top:0.8rem;">Notes: numbers are region- and design-dependent; click the source links for reports and detailed studies.</p>
@@ -724,6 +728,44 @@
                 }
             });
         });
+    </script>
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        // Analytics charts (uses Chart.js)
+        (function(){
+            // Tracker vs baseline (doughnut)
+            const ctxT = document.getElementById('chartTracker');
+            if (ctxT) new Chart(ctxT.getContext('2d'), {
+                type: 'doughnut',
+                data: { labels: ['Estimated tracker gain','Baseline output'], datasets: [{ data: [15,85], backgroundColor: ['#3B82F6','#E5E7EB'], borderWidth: 0 }] },
+                options: { plugins:{legend:{position:'bottom'}}, maintainAspectRatio:false }
+            });
+
+            // Cost decline (bar)
+            const ctxC = document.getElementById('chartCost');
+            if (ctxC) new Chart(ctxC.getContext('2d'), {
+                type: 'bar',
+                data: { labels:['2010','2015','2020','2022'], datasets:[{ label:'Normalized cost index', data:[100,60,30,20], backgroundColor:'#60A5FA' }] },
+                options:{ plugins:{legend:{display:false}}, scales:{ y:{ display:false } }, maintainAspectRatio:false }
+            });
+
+            // Global PV capacity (pie)
+            const ctxCap = document.getElementById('chartCapacity');
+            if (ctxCap) new Chart(ctxCap.getContext('2d'), {
+                type: 'doughnut',
+                data: { labels:['Installed PV','Other'], datasets:[{ data:[1000,9000], backgroundColor:['#06B6D4','#F1F5F9'] }] },
+                options:{ plugins:{legend:{position:'bottom'}}, maintainAspectRatio:false }
+            });
+
+            // SUNSPOT target (doughnut)
+            const ctxTar = document.getElementById('chartTarget');
+            if (ctxTar) new Chart(ctxTar.getContext('2d'), {
+                type: 'doughnut',
+                data: { labels:['Target improvement','Remaining'], datasets:[{ data:[40,60], backgroundColor:['#F97316','#E5E7EB'] }] },
+                options:{ plugins:{legend:{position:'bottom'}}, maintainAspectRatio:false }
+            });
+        })();
     </script>
 </body>
 </html>
