@@ -268,6 +268,14 @@
             transform: scale(1.05);
         }
 
+        /* ANALYTICS */
+        .analytics { max-width:1200px; margin:3rem auto; padding:2rem 1rem; }
+        .analytics-title { text-align:center; font-size:2rem; color:var(--primary-blue); margin-bottom:1.5rem; font-weight:800 }
+        .analytics-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:1rem }
+        .analytics-card { background:rgba(255,255,255,0.85); border-radius:12px; padding:1.2rem; box-shadow:var(--shadow-sm); border:1px solid rgba(0,0,0,0.04) }
+        .analytics-number { font-size:1.6rem; font-weight:900; color:var(--primary-blue); margin-bottom:0.4rem }
+        .analytics-note { font-size:0.95rem; color:var(--text-light) }
+
         .gallery-overlay {
             position: absolute;
             inset: 0;
@@ -564,6 +572,34 @@
     </section>
 
     <!-- IMAGE MODAL -->
+
+    <!-- ANALYTICS -->
+    <section id="analytics" class="analytics">
+        <h2 class="analytics-title">Analytics &amp; Evidence</h2>
+        <div class="analytics-grid">
+            <div class="analytics-card">
+                <div class="analytics-number">10–25%+</div>
+                <div class="analytics-note">Typical energy yield increase from single-axis tracking vs fixed-tilt PV systems (varies by location and design). Source: NREL and industry studies — see <a href="https://www.nrel.gov/docs/fy13osti/57546.pdf" target="_blank" rel="noopener">NREL</a>.</div>
+            </div>
+
+            <div class="analytics-card">
+                <div class="analytics-number">~1 TW</div>
+                <div class="analytics-note">Global cumulative installed solar PV capacity surpassed the terawatt scale in the early 2020s, reflecting rapid deployment worldwide. Source: IEA Renewables report — <a href="https://www.iea.org/reports/renewables-2023" target="_blank" rel="noopener">IEA</a>.</div>
+            </div>
+
+            <div class="analytics-card">
+                <div class="analytics-number">>80%</div>
+                <div class="analytics-note">Decline in utility-scale solar costs (LCOE/capex) over the past decade, improving competitiveness versus conventional generation. Source: IRENA/IEA analysis.</div>
+            </div>
+
+            <div class="analytics-card">
+                <div class="analytics-number">40% (targeted)</div>
+                <div class="analytics-note">Prototype and optimized tracker+panel system performance can outperform static panels; our design goal is a high-yield biomimetic arrangement — site-specific validation required.</div>
+            </div>
+        </div>
+        <p style="text-align:center;font-size:0.9rem;color:var(--text-light);margin-top:0.8rem;">Notes: numbers are region- and design-dependent; click the source links for reports and detailed studies.</p>
+    </section>
+
     <div class="modal" id="imageModal">
         <div class="modal-content">
             <button class="modal-close" onclick="closeModal()">✕</button>
