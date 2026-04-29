@@ -738,7 +738,7 @@
             const ctxT = document.getElementById('chartTracker');
             if (ctxT) new Chart(ctxT.getContext('2d'), {
                 type: 'doughnut',
-                data: { labels: ['Estimated tracker gain','Baseline output'], datasets: [{ data: [15,85], backgroundColor: ['#3B82F6','#E5E7EB'], borderWidth: 0 }] },
+                data: { labels: ['Estimated tracker gain','Baseline output'], datasets: [{ data: [15,85], backgroundColor: ['#ffa31a','#E5E7EB'], borderWidth: 0 }] },
                 options: { plugins:{legend:{position:'bottom'}}, maintainAspectRatio:false }
             });
 
@@ -746,7 +746,7 @@
             const ctxC = document.getElementById('chartCost');
             if (ctxC) new Chart(ctxC.getContext('2d'), {
                 type: 'bar',
-                data: { labels:['2010','2015','2020','2022'], datasets:[{ label:'Normalized cost index', data:[100,60,30,20], backgroundColor:'#60A5FA' }] },
+                data: { labels:['2010','2015','2020','2022'], datasets:[{ label:'Normalized cost index', data:[100,60,30,20], backgroundColor:'#ffa31a' }] },
                 options:{ plugins:{legend:{display:false}}, scales:{ y:{ display:false } }, maintainAspectRatio:false }
             });
 
@@ -754,7 +754,7 @@
             const ctxCap = document.getElementById('chartCapacity');
             if (ctxCap) new Chart(ctxCap.getContext('2d'), {
                 type: 'doughnut',
-                data: { labels:['Installed PV','Other'], datasets:[{ data:[1000,9000], backgroundColor:['#06B6D4','#F1F5F9'] }] },
+                data: { labels:['Installed PV','Other'], datasets:[{ data:[1000,9000], backgroundColor:['#ffa31a','#F1F5F9'] }] },
                 options:{ plugins:{legend:{position:'bottom'}}, maintainAspectRatio:false }
             });
 
@@ -762,7 +762,7 @@
             const ctxTar = document.getElementById('chartTarget');
             if (ctxTar) new Chart(ctxTar.getContext('2d'), {
                 type: 'doughnut',
-                data: { labels:['Target improvement','Remaining'], datasets:[{ data:[40,60], backgroundColor:['#F97316','#E5E7EB'] }] },
+                data: { labels:['Target improvement','Remaining'], datasets:[{ data:[40,60], backgroundColor:['#ffa31a','#E5E7EB'] }] },
                 options:{ plugins:{legend:{position:'bottom'}}, maintainAspectRatio:false }
             });
         })();
