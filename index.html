@@ -501,7 +501,7 @@
         <div class="navbar-container">
             <a href="#home" class="navbar-logo">
                 <img src="img/logo.png" alt="SUNSPOT Logo" width="32" height="32">
-                SUNSPOT
+                <span style="color:#ffa31a;">SUN</span>SPOT
             </a>
             <ul class="nav-links">
                 <li><a href="#home">Home</a></li>
@@ -545,19 +545,19 @@
             <div class="gallery-item" onclick="openModal('img/Sunspot (1).png')">
                 <img src="img/Sunspot (1).png" alt="SUNSPOT Blueprint Design">
                 <div class="gallery-overlay">
-                    <div class="gallery-zoom">🔍</div>
+                    <div class="gallery-zoom">+</div>
                 </div>
             </div>
             <div class="gallery-item" onclick="openModal('img/Sunspot (2).png')">
                 <img src="img/Sunspot (2).png" alt="SUNSPOT Solar Panel Illustration">
                 <div class="gallery-overlay">
-                    <div class="gallery-zoom">🔍</div>
+                    <div class="gallery-zoom">+</div>
                 </div>
             </div>
             <div class="gallery-item" onclick="openModal('img/Sunspot (3).png')">
                 <img src="img/Sunspot (3).png" alt="SUNSPOT Charging Station Illustration">
                 <div class="gallery-overlay">
-                    <div class="gallery-zoom">🔍</div>
+                    <div class="gallery-zoom">+</div>
                 </div>
             </div>
         </div>
@@ -572,9 +572,80 @@
     </div>
 
     <!-- FOOTER -->
-    <footer>
-        <p>&copy; 2026 SUNSPOT. Powered by the sun. Built for the future.</p>
-        <p style="font-size: 0.9rem;">Sustainable Energy • Secure Charging • Connected Communities</p>
+    <footer aria-label="Site Footer">
+        <div style="max-width:1200px;margin:0 auto;padding:2rem 1rem;">
+            <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:2rem;align-items:start;margin-bottom:1.5rem;">
+                <!-- Brand -->
+                <div>
+                    <a class="navbar-logo" href="#home" style="text-decoration:none;display:inline-flex;align-items:center;gap:0.6rem;font-size:1.1rem;">
+                        <img src="img/logo.png" alt="SUNSPOT" width="28" height="28" style="border-radius:6px;object-fit:cover;">
+                        <span style="color:#ffa31a;font-weight:800;">SUNSPOT</span>
+                    </a>
+                    <p style="color:var(--text-light);font-size:0.95rem;line-height:1.6;margin-top:0.8rem;">Elegant biomimetic solar stations delivering secure charging, connectivity, and sustainable infrastructure for public spaces.</p>
+                </div>
+
+                <!-- Explore -->
+                <div>
+                    <h4 style="color:var(--primary-blue);margin-bottom:0.6rem;font-size:1rem;">Explore</h4>
+                    <ul style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:0.6rem;">
+                        <li><a href="#about" style="color:var(--text-light);text-decoration:none;">About</a></li>
+                        <li><a href="#" style="color:var(--text-light);text-decoration:none;">Products</a></li>
+                        <li><a href="#gallery" style="color:var(--text-light);text-decoration:none;">Gallery</a></li>
+                    </ul>
+                </div>
+
+                <!-- Support -->
+                <div>
+                </div>
+
+                <!-- Newsletter -->
+                <div>
+                   
+                    <p id="newsletter-feedback-index" style="color:var(--text-light);font-size:0.85rem;margin-top:0.6rem;display:none;"></p>
+                </div>
+            </div>
+
+            <div style="border-top:1px solid var(--border-light);padding-top:1rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;">
+                <div style="color:var(--text-light);font-size:0.9rem;">&copy; 2026 SUNSPOT. All rights reserved.</div>
+                <div style="display:flex;gap:0.6rem;align-items:center;">
+                    <a href="#" style="color:var(--text-light);text-decoration:none;margin-right:0.6rem;">Privacy</a>
+                    <a href="#" style="color:var(--text-light);text-decoration:none;margin-right:0.6rem;">Terms</a>
+                    <a href="#" style="color:var(--text-light);text-decoration:none;">Accessibility</a>
+                </div>
+                <div style="display:flex;gap:0.6rem;align-items:center;">
+                    <a href="https://facebook.com/sunspot" aria-label="Facebook" style="width:36px;height:36px;display:inline-flex;align-items:center;justify-content:center;border-radius:50%;background:rgba(0,0,0,0.03);color:var(--primary-blue);text-decoration:none;border:1px solid rgba(0,0,0,0.04);">f</a>
+                    <a href="https://twitter.com/sunspot" aria-label="X" style="width:36px;height:36px;display:inline-flex;align-items:center;justify-content:center;border-radius:50%;background:rgba(0,0,0,0.03);color:var(--primary-blue);text-decoration:none;border:1px solid rgba(0,0,0,0.04);">𝕏</a>
+                    <a href="https://linkedin.com/company/sunspot" aria-label="LinkedIn" style="width:36px;height:36px;display:inline-flex;align-items:center;justify-content:center;border-radius:50%;background:rgba(0,0,0,0.03);color:var(--primary-blue);text-decoration:none;border:1px solid rgba(0,0,0,0.04);">in</a>
+                </div>
+            </div>
+        </div>
+
+        <style>
+            /* footer specific */
+            footer a { transition: color .18s ease, transform .18s ease; }
+            footer a:hover { color: var(--accent-blue); transform: translateY(-3px); }
+            @media (max-width:720px){ footer div[style*="display:grid"]{ grid-template-columns: 1fr; } }
+        </style>
+
+        <script>
+            (function(){
+                const form = document.getElementById('newsletter-form-index');
+                const feedback = document.getElementById('newsletter-feedback-index');
+                if (!form) return;
+                form.addEventListener('submit', function(e){
+                    e.preventDefault();
+                    const email = form.querySelector('input[type="email"]').value.trim();
+                    if (!email) {
+                        feedback.style.display = 'block';
+                        feedback.textContent = 'Please enter a valid email address.';
+                        return;
+                    }
+                    feedback.style.display = 'block';
+                    feedback.textContent = 'Thanks — you are subscribed!';
+                    form.querySelector('input[type="email"]').value = '';
+                });
+            })();
+        </script>
     </footer>
 
     <script>
